@@ -58,6 +58,11 @@ public class Configuration {
         Configuration  conf = new Configuration() ;
         System.out.println(conf);
         System.out.println("Fin de programme  ...... ");
+<<<<<<< HEAD
+=======
+        System.out.println("Fin de programme 4 ..... ");
+	System.out.println("Fin de programme 5 ..... ");
+>>>>>>> origin/master
     }
     
 }
