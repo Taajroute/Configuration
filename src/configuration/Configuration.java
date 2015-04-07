@@ -58,7 +58,6 @@ public class Configuration {
         Configuration  conf = new Configuration() ;
         System.out.println(conf);
         System.out.println("Fin de programme  ...... ");
-        System.out.println("Fin de programme 4 ..... ");
     }
     
 }

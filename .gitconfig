@@ -1,6 +1,0 @@
-# Auto detect text files and perform LF normalization
-[http]
-    proxy = http://proxy.unicaen.fr:3128
-
-[https]
-    proxy = http://proxy.unicaen.fr:3128
