@@ -5,9 +5,15 @@
  */
 package configuration;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -15,7 +21,7 @@ import java.util.logging.Logger;
  */
 public class Configuration {
 
-  int Id_Mode;
+  String Id_Mode;
   String Seed ; 
   String Start ; 
   String End; 
@@ -47,7 +53,7 @@ public class Configuration {
            "\n Gtin "+Gtin+ "\tSize="+Gtin_Size+
            "\n Date Fabrication "+Date_Fabrication+
            "\n Date Experation "+Date_Experation+
-           "\n Batch "+Gtin+ "\tSize="+Batch_Size+
+           "\n Batch "+Batch+ "\tSize="+Batch_Size+
            "\n Hidden Message "+Hidden_Message+ "\tSize="+Hidden_Message_Size+
            "\n Code Barres Type "+Code_Barres_Type;
   }
@@ -55,17 +61,42 @@ public class Configuration {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Configuration  conf = new Configuration() ;
-        System.out.println(conf);
-        System.out.println("Fin de programme  ...... ");
-
-        System.out.println("Fin de programme 4 ..... ");
-	System.out.println("Fin de programme 5 ..... ");
-        System.out.println("Fin de programme 6 ..... ");	
-	System.out.println("Fin de programme 7 ..... ");
-        
-        System.out.println("Test mise à jour ...");
-        System.out.println("Test mise à jour II ...");
+      try {
+          Configuration  conf = new Configuration() ;
+          System.out.println(conf);
+          System.out.println("Fin de programme  ...... ");
+          
+          System.out.println("Fin de programme 4 ..... ");
+          System.out.println("Fin de programme 5 ..... ");
+          System.out.println("Fin de programme 6 ..... ");
+          System.out.println("Fin de programme 7 ..... ");
+          
+          System.out.println("Test mise à jour ...");
+          System.out.println("Test mise à jour II ...");
+          
+          
+          
+          SAXParserFactory parserFactor = SAXParserFactory.newInstance();
+          SAXParser parser = parserFactor.newSAXParser();
+          SAXHandler handler = new SAXHandler();
+          
+          
+          
+          parser.parse( new FileInputStream("ConfigurationBase.xml"),handler);
+          
+          //Printing the list of employees obtained from XML
+          
+          System.err.println(handler.emp);
+          
+      } catch (FileNotFoundException ex) {
+          Logger.getLogger(Configuration.class.getName()).log(Level.SEVERE, null, ex);
+      } catch (SAXException ex) {
+          Logger.getLogger(Configuration.class.getName()).log(Level.SEVERE, null, ex);
+      } catch (IOException ex) {
+          Logger.getLogger(Configuration.class.getName()).log(Level.SEVERE, null, ex);
+      } catch (ParserConfigurationException ex) {
+          Logger.getLogger(Configuration.class.getName()).log(Level.SEVERE, null, ex);
+      }
     }
     
 }
