@@ -1,0 +1,44 @@
+<configuration id="242">
+
+		<serialisation >
+			<seed>
+				123456
+			</seed>
+			
+			<start>
+				0
+			</start>
+			
+			<end>
+				100000
+			</end>
+			
+			<max>
+			 9999999999
+			</max>
+		</serialisation>
+
+		<gtin  size="14">
+			99999999999999
+		</gtin>
+
+		<fab>
+			04/2015
+		</fab>
+		<exp>
+			04/2020
+		<exp>
+
+		<Batch   size="10">
+		  99ABCDE999
+		<Batch>
+
+		<hidden_message  size="8">
+		   Message secret...
+		</hidden_message>
+
+		<Code-Barres >
+			Data-Matrix
+		</Code-Barres>
+
+</configuration>

@@ -57,12 +57,15 @@ public class Configuration {
            "\n Hidden Message "+Hidden_Message+ "\tSize="+Hidden_Message_Size+
            "\n Code Barres Type "+Code_Barres_Type;
   }
+  
+  
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
       try {
           Configuration  conf = new Configuration() ;
+          BigInteger Hidden_Message = new BigInteger(Hidden_Message);
           System.out.println(conf);
           System.out.println("Fin de programme  ...... ");
           
