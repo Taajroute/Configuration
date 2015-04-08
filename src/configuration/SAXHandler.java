@@ -21,30 +21,30 @@ import org.xml.sax.helpers.DefaultHandler;
 public class SAXHandler extends DefaultHandler{
     
  
-  //List<Configuration> empList = new ArrayList<>();
-  Configuration emp = null;
+  
+  Configuration config = null;
   String content = null;
   public void startElement(String uri, String localName,
                            String qName, Attributes attributes)                           throws SAXException {
 	       
    switch(qName){
-     //Create a new Employee object when the start tag is found
+     //Create a new Configuration object when the start tag is found
      case "configuration":
-       emp = new Configuration();
+       config = new Configuration();
        Integer  idmode= new Integer(attributes.getValue("id"));
-       emp.Id_Mode = idmode;
+       config.Id_Mode = idmode;
        break;
      case "gtin":
         Integer gtinsize= new Integer(attributes.getValue("size"));
-        emp.Gtin_Size = gtinsize;
+        config.Gtin_Size = gtinsize;
        break;
      case "Batch" :
          Integer batchsize = new Integer(attributes.getValue("size"));
-          emp.Batch_Size = batchsize;
+          config.Batch_Size = batchsize;
        break;
      case "hidden_message" :
           Integer messagesize= new Integer (attributes.getValue("size"));
-          emp.Hidden_Message_Size = messagesize;
+          config.Hidden_Message_Size = messagesize;
        break;
              
         
@@ -54,42 +54,42 @@ public class SAXHandler extends DefaultHandler{
   public void endElement(String uri, String localName,
                     String qName) throws SAXException {
     switch(qName){
-    //Add the employee to list once end tag is found
+    
     case "configuration":
      System.out.println("Fin lecture balise configuration");
      break;
-   //For all other end tags the employee has to be updated.
+   //For all other end tags the configuration has to be updated.
    case "gtin":
-       emp.Gtin=content;
+       config.Gtin=content;
        break;
        
     case "seed":
     BigInteger seedcont;
     seedcont = new BigInteger(content);
-    emp.Seed=seedcont;
+    config.Seed=seedcont;
     break;
         
     case "start":
         BigInteger startcont;
         startcont=new BigInteger(content);
-        emp.Start = startcont;
+        config.Start = startcont;
         break;
     case "end":
         BigInteger endcont;
         endcont= new BigInteger(content);
-        emp.End = endcont;
+        config.End = endcont;
         break;
     case "max":
         BigInteger maxcont;
         maxcont = new BigInteger (content);
-        emp.Max = maxcont;
+        config.Max = maxcont;
         break;
     case "fab":
         SimpleDateFormat format = new SimpleDateFormat("MM/yyyy");
         try {
              Date datefab;
              datefab = format.parse(content);
-             emp.Date_Fabrication = datefab;
+             config.Date_Fabrication = datefab;
 			      
 			} catch (java.text.ParseException e) {
  
@@ -102,7 +102,7 @@ public class SAXHandler extends DefaultHandler{
         try {
              Date datexp;
              datexp = form.parse(content);
-             emp.Date_Experation = datexp;
+             config.Date_Experation = datexp;
 			      
 			} catch (java.text.ParseException e) {
  
@@ -111,13 +111,13 @@ public class SAXHandler extends DefaultHandler{
         
         break; 
          case "Batch":
-        emp.Batch=content;
+        config.Batch=content;
         break;       
         case "hidden_message":
-        emp.Hidden_Message=content;
+        config.Hidden_Message=content;
         break; 
         case "Code-Barres":
-        emp.Code_Barres_Type=content;
+        config.Code_Barres_Type=content;
         break; 
     }
   }

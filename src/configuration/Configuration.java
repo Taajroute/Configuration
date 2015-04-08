@@ -90,7 +90,7 @@ public class Configuration {
           
           //Printing the list of employees obtained from XML
           
-          System.err.println(handler.emp);
+          System.err.println(handler.config);
           
       } catch (FileNotFoundException ex) {
           Logger.getLogger(Configuration.class.getName()).log(Level.SEVERE, null, ex);
