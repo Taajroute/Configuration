@@ -63,7 +63,8 @@ public class Configuration {
 	System.out.println("Fin de programme 5 ..... ");
         System.out.println("Fin de programme 6 ..... ");	
 	System.out.println("Fin de programme 7 ..... ");
-ghdgfhgfhgf
+        
+        System.out.println("Test mise à jour ...");
     }
     
 }
