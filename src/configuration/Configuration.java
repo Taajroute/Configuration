@@ -8,6 +8,8 @@ package configuration;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.ParserConfigurationException;
@@ -21,23 +23,23 @@ import org.xml.sax.SAXException;
  */
 public class Configuration {
 
-  String Id_Mode;
-  String Seed ; 
-  String Start ; 
-  String End; 
-  String Max;
+  int Id_Mode;
+  BigInteger Seed ; 
+  BigInteger Start ; 
+  BigInteger End; 
+  BigInteger Max;
   
   String Gtin;
-  String Gtin_Size ;
+  int Gtin_Size ;
   
-  String Date_Fabrication; 
-  String Date_Experation;
+  Date Date_Fabrication; 
+  Date Date_Experation;
   
   String Batch;
-  String Batch_Size;
+  int Batch_Size;
   
   String Hidden_Message ;
-  String Hidden_Message_Size ;
+  int Hidden_Message_Size ;
   
   String Code_Barres_Type;
  
@@ -65,7 +67,6 @@ public class Configuration {
     public static void main(String[] args) {
       try {
           Configuration  conf = new Configuration() ;
-          BigInteger Hidden_Message = new BigInteger(Hidden_Message);
           System.out.println(conf);
           System.out.println("Fin de programme  ...... ");
           

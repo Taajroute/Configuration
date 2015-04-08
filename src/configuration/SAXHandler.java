@@ -5,7 +5,10 @@
  */
 package configuration;
 
+import java.math.BigInteger;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -28,16 +31,20 @@ public class SAXHandler extends DefaultHandler{
      //Create a new Employee object when the start tag is found
      case "configuration":
        emp = new Configuration();
-       emp.Id_Mode = attributes.getValue("id");
+       Integer  idmode= new Integer(attributes.getValue("id"));
+       emp.Id_Mode = idmode;
        break;
      case "gtin":
-       emp.Gtin_Size = attributes.getValue("size");
+        Integer gtinsize= new Integer(attributes.getValue("size"));
+        emp.Gtin_Size = gtinsize;
        break;
      case "Batch" :
-         emp.Batch_Size = attributes.getValue("size");
+         Integer batchsize = new Integer(attributes.getValue("size"));
+          emp.Batch_Size = batchsize;
        break;
      case "hidden_message" :
-         emp.Hidden_Message_Size = attributes.getValue("size");
+          Integer messagesize= new Integer (attributes.getValue("size"));
+          emp.Hidden_Message_Size = messagesize;
        break;
              
         
@@ -57,23 +64,51 @@ public class SAXHandler extends DefaultHandler{
        break;
        
     case "seed":
-    emp.Seed=content;
+    BigInteger seedcont;
+    seedcont = new BigInteger(content);
+    emp.Seed=seedcont;
     break;
         
     case "start":
-        emp.Start=content;
+        BigInteger startcont;
+        startcont=new BigInteger(content);
+        emp.Start = startcont;
         break;
-      case "end":
-        emp.End=content;
+    case "end":
+        BigInteger endcont;
+        endcont= new BigInteger(content);
+        emp.End = endcont;
         break;
-          case "max":
-        emp.Max=content;
+    case "max":
+        BigInteger maxcont;
+        maxcont = new BigInteger (content);
+        emp.Max = maxcont;
         break;
-           case "fab":
-        emp.Date_Fabrication=content;
+    case "fab":
+        SimpleDateFormat format = new SimpleDateFormat("MM/yyyy");
+        try {
+             Date datefab;
+             datefab = format.parse(content);
+             emp.Date_Fabrication = datefab;
+			      
+			} catch (java.text.ParseException e) {
+ 
+				System.out.print("Erreur date fabrication");
+			}
         break;
           case "exp":
-        emp.Date_Experation=content;
+               SimpleDateFormat form;
+               form = new SimpleDateFormat("MM/yyyy");
+        try {
+             Date datexp;
+             datexp = form.parse(content);
+             emp.Date_Experation = datexp;
+			      
+			} catch (java.text.ParseException e) {
+ 
+				System.out.print("Erreur date fabrication");
+			}
+        
         break; 
          case "Batch":
         emp.Batch=content;
@@ -89,6 +124,10 @@ public class SAXHandler extends DefaultHandler{
   public void characters(char[] ch, int start, int length)
     throws SAXException {
     content = String.copyValueOf(ch, start, length).trim();
+    }
+
+    private int BigInteger(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 
