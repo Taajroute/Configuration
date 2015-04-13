@@ -286,8 +286,12 @@ public class ReadXMLFile {
                     {
 
                         case "pmode" :
-                            conf.Pmode = Node_Value;
+                            conf.Pmode=Integer.parseInt(Node_Value);
                             
+                            
+                           
+                            
+                           
                             if( tempNode.hasAttributes())
                                 {
                                     NamedNodeMap nodeMap = tempNode.getAttributes();
@@ -300,8 +304,10 @@ public class ReadXMLFile {
                                         if( attr_name=="size" )
                                             conf.Pmode_Size=Integer.parseInt(attr_value.trim());
                                         
-                                            byte[] conf_pmode= Base64.getDecoder().decode(conf.Pmode.trim());
-                                            conf.Buffer_Packaging_Methode.Append(conf_pmode, conf.Pmode_Size);
+                                           JIBitArray tmpo1= new JIBitArray(conf.Pmode);
+                                                     tmpo1.SetAll(false);
+                                                     tmpo1.Set(0, conf.Pmode_Size, conf.Pmode);
+                                                     conf.Buffer_Packaging_Methode.Append(tmpo1);
                                            
                                              
                                     }
@@ -311,7 +317,7 @@ public class ReadXMLFile {
                         break;
                             
                         case "prandome-code" :
-                            conf.Prandome = Node_Value ;
+                            conf.Prandome = new BigInteger(Node_Value) ;
                             if( tempNode.hasAttributes())
                                 {
                                     NamedNodeMap nodeMap = tempNode.getAttributes();
@@ -323,17 +329,21 @@ public class ReadXMLFile {
 
                                         if( attr_name=="size" )
                                             conf.Prandome_Size=Integer.parseInt(attr_value.trim());
-                                         byte[] conf_prandome= Base64.getDecoder().decode(conf.Prandome.trim());
-                                            conf.Buffer_Packaging_Methode.Append(conf_prandome, conf.Prandome_Size);
-                                           
+                                       JIBitArray tmpo= new JIBitArray(conf.Prandome_Size);
+                                                   tmpo.SetAll(false);
+                                                   tmpo.Set(0, conf.Prandome_Size, conf.Prandome);
+                                                   conf.Buffer_Packaging_Methode.Append(tmpo);
+                                         
+            
                                         
                                             
                                     }
                                 }
                         break;  
-                            
+                             
                         case "sub-packaging" :
                              Parse_Sub_Packaging( tempNode ,   conf);
+                             conf.Buffer_Packaging_Methode.Append(conf.Buffer_Sub_Packaging);
                              if( tempNode.hasAttributes())
                                 {
                                     NamedNodeMap nodeMap = tempNode.getAttributes();
@@ -363,8 +373,7 @@ public class ReadXMLFile {
                 }
              
              System.out.println ("===========333333333====================");
-             //System.out.println ("["+conf.Buffer_Packaging_Methode.ToStringBase()+"]["+conf.Buffer_Sub_Packaging.ToStringBase()+"]");
-             conf.Buffer_Packaging_Methode.Append(conf.Buffer_Sub_Packaging);
+             System.out.println ("["+conf.Buffer_Packaging_Methode.ToStringBase()+"]");
              System.out.println ("=========================================");
             }
              

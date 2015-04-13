@@ -55,10 +55,10 @@ public class Configuration {
   String Packaging_Methode;
   int Packaging_Methode_Size;
   
-  String Pmode;
+  int Pmode;
   int Pmode_Size;
   
-  String Prandome;
+  BigInteger Prandome;
   int Prandome_Size;
   
   String Sub_Packaging;

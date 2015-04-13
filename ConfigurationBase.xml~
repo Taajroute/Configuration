@@ -41,7 +41,7 @@
 			Data-Matrix
 		</Code-Barres>
 		
-		<packaging-methode  size ="268" mode-chiffrement="algo">
+		<packaging-methode  size ="268" mode-chiffrement="algorithme">
 			<pmode  size="8">
                         abdg 
                         </pmode>
@@ -50,7 +50,7 @@
 			ahdh
 			</prandome-code>
 			
-			<sub-packaging  size ="204" mode-chiffrement="algo1">
+			<sub-packaging  size ="204" mode-chiffrement="algorithme_1">
 				<pgtin size="48"/>
 				<pseed size="32"/>
 				<pfab  size="22"/>

@@ -43,11 +43,11 @@
 		
 		<packaging-methode  size ="268" mode-chiffrement="algorithme">
 			<pmode  size="8">
-                        abdg 
+                        14
                         </pmode>
                                 
 			<prandome-code  size="64">
-			ahdh
+			554455
 			</prandome-code>
 			
 			<sub-packaging  size ="204" mode-chiffrement="algorithme_1">
