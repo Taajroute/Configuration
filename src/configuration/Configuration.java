@@ -89,7 +89,7 @@ public class Configuration {
   String S_Chiffrement;
   
   JIBitArray Buffer_Sub_Packaging;
-  JIBitArray Buffer;
+  JIBitArray Buffer_Packaging_Methode;
   
  
   
@@ -120,7 +120,7 @@ public class Configuration {
            "\n Pbatch "+Pbatch+ "\tSize="+Pbatch_Size+
            "\n Affiche "+a+
            "\n Affichage Binaire :"+Buffer_Sub_Packaging.ToStringBase()+
-            "\n Affichage Binaire :"+Buffer;
+            "\n Affichage Binaire de Packaging-Methode :" +Buffer_Packaging_Methode.ToStringBase();
            
   }
   

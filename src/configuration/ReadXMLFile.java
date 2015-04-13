@@ -35,6 +35,10 @@ public class ReadXMLFile {
         try {
            
             Configuration  conf = new Configuration() ; 
+            
+            conf.Buffer_Sub_Packaging = new JIBitArray();
+            
+            conf.Buffer_Packaging_Methode = new JIBitArray();
              
             File fXmlFile = new File("ConfigurationBase.xml");
 
@@ -243,7 +247,7 @@ public class ReadXMLFile {
     boolean Parse_packaging( Node  NodeBase , Configuration  conf)  
     {
         String a ="";
-         conf.Buffer_Sub_Packaging = new JIBitArray();
+         //conf.Buffer_Sub_Packaging = new JIBitArray();
          // On analyse la balise serialisation 
          if (NodeBase.getNodeType() == Node.ELEMENT_NODE) 
          {
@@ -295,8 +299,15 @@ public class ReadXMLFile {
 
                                         if( attr_name=="size" )
                                             conf.Pmode_Size=Integer.parseInt(attr_value.trim());
+                                        
+                                            byte[] conf_pmode= Base64.getDecoder().decode(conf.Pmode.trim());
+                                            conf.Buffer_Packaging_Methode.Append(conf_pmode, conf.Pmode_Size);
+                                           
+                                             
                                     }
+                                    
                                 }
+                                   
                         break;
                             
                         case "prandome-code" :
@@ -312,6 +323,11 @@ public class ReadXMLFile {
 
                                         if( attr_name=="size" )
                                             conf.Prandome_Size=Integer.parseInt(attr_value.trim());
+                                         byte[] conf_prandome= Base64.getDecoder().decode(conf.Prandome.trim());
+                                            conf.Buffer_Packaging_Methode.Append(conf_prandome, conf.Prandome_Size);
+                                           
+                                        
+                                            
                                     }
                                 }
                         break;  
@@ -345,7 +361,14 @@ public class ReadXMLFile {
                     }
                  
                 }
+             
+             System.out.println ("===========333333333====================");
+             //System.out.println ("["+conf.Buffer_Packaging_Methode.ToStringBase()+"]["+conf.Buffer_Sub_Packaging.ToStringBase()+"]");
+             conf.Buffer_Packaging_Methode.Append(conf.Buffer_Sub_Packaging);
+             System.out.println ("=========================================");
             }
+             
+             
          }  
          
         
@@ -360,13 +383,10 @@ public class ReadXMLFile {
              
            
              NodeList nodeList=NodeBase.getChildNodes();
-             String a1="abc";
-             //int a2=;
+             
+             
              String a ="";
-             //JIBitArray Buffer= new JIBitArray();
-             //byte [] b1;
-             //b1 = Base64.getDecoder().decode(a1.trim());
-             //Buffer.Append(b1, a1);
+             
              for (int count = 0; count < nodeList.getLength(); count++) 
              {
                  Node tempNode = nodeList.item(count);
@@ -434,8 +454,7 @@ public class ReadXMLFile {
                                             tmp.SetAll(false);
                                             tmp.Set(0,conf.Pseed_Size ,  conf.Seed);
                                             conf.Buffer_Sub_Packaging.Append(tmp);
-                                            //byte [] b2 = Base64.getDecoder().decode(conf.Seed);
-                                            //conf.Buffer_Sub_Packaging.Append(b2, conf.Pseed_Size);
+                                            
                                     }
                                    
                                 }

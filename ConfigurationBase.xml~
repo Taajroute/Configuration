@@ -50,7 +50,7 @@
 			ahdh
 			</prandome-code>
 			
-			<sub-packaging  size ="204" mode-chifferement="algo1">
+			<sub-packaging  size ="204" mode-chiffrement="algo1">
 				<pgtin size="48"/>
 				<pseed size="32"/>
 				<pfab  size="22"/>
