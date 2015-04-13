@@ -27,11 +27,11 @@
 		</fab>
 		<exp>
 			04/2020
-		<exp>
+		</exp>
 
 		<Batch   size="10">
 		  99ABCDE999
-		<Batch>
+		</Batch>
 
 		<hidden_message  size="8">
 		   Message secret...
@@ -40,5 +40,24 @@
 		<Code-Barres >
 			Data-Matrix
 		</Code-Barres>
+		
+		<packaging-methode  size ="268" mode-chiffrement="algo">
+			<pmode  size="8">
+                        abdg 
+                        </pmode>
+                                
+			<prandome-code  size="64">
+			ahdh
+			</prandome-code>
+			
+			<sub-packaging  size ="204" mode-chifferement="algo1">
+				<pgtin size="48"/>
+				<pseed size="32"/>
+				<pfab  size="22"/>
+				<pexp  size="22"/>
+				<pbatch size="80"/>
+			</sub-packaging>
+			
+		</packaging-methode>
 
 </configuration>
